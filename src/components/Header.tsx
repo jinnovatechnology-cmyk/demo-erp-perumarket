@@ -69,7 +69,7 @@ export default function Header() {
   const confirmLogout = async () => {
     await authService.logout();
     setShowLogoutModal(false);
-    window.location.href = "/login";
+    window.location.href = "/#/login";
   };
 
   const getNombreCompleto = () => {
