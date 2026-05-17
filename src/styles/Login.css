@@ -1,0 +1,169 @@
+/* Login.css - Estilos específicos para la página de login */
+
+/* Animaciones personalizadas */
+@keyframes float {
+  0% { 
+    transform: translateY(0) scale(1); 
+    opacity: 0; 
+  }
+  10% { 
+    opacity: 1; 
+  }
+  90% { 
+    opacity: 1; 
+  }
+  100% { 
+    transform: translateY(-120vh) scale(1.5); 
+    opacity: 0; 
+  }
+}
+
+@keyframes shake {
+  0%, 100% { 
+    transform: translateX(0); 
+  }
+  25% { 
+    transform: translateX(-4px); 
+  }
+  75% { 
+    transform: translateX(4px); 
+  }
+}
+
+@keyframes shimmer {
+  0% { 
+    background-position: 0% 50%; 
+  }
+  100% { 
+    background-position: 200% 50%; 
+  }
+}
+
+@keyframes pulse-slow {
+  0%, 100% { 
+    opacity: 0.2; 
+    transform: scale(1); 
+  }
+  50% { 
+    opacity: 0.3; 
+    transform: scale(1.1); 
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Clases de utilidad */
+.animate-float {
+  animation: float linear infinite;
+}
+
+.animate-shake {
+  animation: shake 0.4s ease-in-out;
+}
+
+.animate-shimmer {
+  animation: shimmer 5s linear infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 6s ease-in-out infinite;
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.6s ease-out;
+}
+
+.animate-slide-in-up {
+  animation: slide-in-up 0.6s ease-out;
+}
+
+/* Efectos de glassmorphism mejorados */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.glass-effect-intense {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(25px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Mejoras responsive específicas */
+@media (max-width: 640px) {
+  .login-container {
+    padding: 1rem;
+  }
+  
+  .mobile-logo {
+    transform: scale(0.9);
+  }
+  
+  .form-container {
+    margin-top: -1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .mobile-logo {
+    transform: scale(0.8);
+  }
+  
+  .login-button {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+}
+
+/* Mejoras de accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+  .animate-float,
+  .animate-shake,
+  .animate-shimmer,
+  .animate-pulse-slow,
+  .animate-slide-in-right,
+  .animate-slide-in-up {
+    animation: none;
+  }
+}
+
+/* Efectos de focus mejorados */
+.focus-visible\:ring-amber-500:focus-visible {
+  --tw-ring-color: rgb(245, 158, 11);
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+/* Mejoras para tablets */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .tablet-logo {
+    width: 280px;
+    height: 280px;
+  }
+  
+  .tablet-text {
+    font-size: 1.125rem;
+  }
+}
