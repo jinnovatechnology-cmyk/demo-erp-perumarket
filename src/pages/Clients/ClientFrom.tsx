@@ -265,9 +265,9 @@ export default function ClienteForm({ state, setField, onCancel, onSave, loading
   }
 
   return (
-    <div className={`flex flex-col h-full ${isDark ? 'bg-[#171717]' : 'bg-white'}`}>
+    <div className={`flex flex-col flex-1 min-h-0 ${isDark ? 'bg-[#171717]' : 'bg-white'}`}>
       {/* Header */}
-      <div className={`px-6 py-5 border-b ${isDark ? 'border-neutral-800' : 'border-gray-200'}`}>
+      <div className={`flex-none px-6 py-5 border-b ${isDark ? 'border-neutral-800' : 'border-gray-200'}`}>
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
             {/* Icon */}
@@ -481,7 +481,7 @@ export default function ClienteForm({ state, setField, onCancel, onSave, loading
       </form>
 
       {/* Footer */}
-      <div className={`px-6 py-4 border-t flex items-center justify-end gap-3 ${isDark ? 'bg-[#0a0a0a]/50 border-neutral-800' : 'bg-gray-50 border-gray-200'}`}>
+      <div className={`flex-none px-6 py-4 border-t flex items-center justify-end gap-3 ${isDark ? 'bg-[#0a0a0a]/50 border-neutral-800' : 'bg-gray-50 border-gray-200'}`}>
         <button
           type="button"
           disabled={loading}
