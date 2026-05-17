@@ -31,7 +31,7 @@ export default function ProveedorDeleteModal({ isOpen, onClose, onConfirm, nombr
 
   return (
     <div className="fixed inset-0 z-[100] overflow-y-auto">
-      <div className="flex min-h-screen items-center justify-center p-4">
+      <div className="flex min-h-full items-center justify-center p-4">
         {/* Backdrop */}
         <div
           className={`fixed inset-0 ${isDark ? 'bg-black/70' : 'bg-gray-900/50'} backdrop-blur-sm transition-opacity`}

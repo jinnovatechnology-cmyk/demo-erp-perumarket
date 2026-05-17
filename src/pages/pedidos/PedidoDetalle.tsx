@@ -58,8 +58,8 @@ const PedidoDetalle: React.FC<PedidoDetalleProps> = ({ pedido, onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-      <div className={`${isDark ? 'bg-gray-800' : 'bg-white'} rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto`}>
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50 overflow-y-auto">
+      <div className={`${isDark ? 'bg-gray-800' : 'bg-white'} rounded-lg max-w-4xl w-full max-h-[92dvh] overflow-y-auto`}>
         <div className="p-6">
           {/* Header */}
           <div className="flex justify-between items-center mb-6">

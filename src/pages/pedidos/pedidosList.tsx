@@ -336,7 +336,7 @@ const PedidosList: React.FC = () => {
 
         {/* Modal para editar estado del pedido */}
         {pedidoEditando && (
-          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50 overflow-y-auto">
             <div className={`${isDark ? 'bg-gray-800' : 'bg-white'} rounded-lg shadow-xl w-full max-w-md`}>
               <div className="p-6">
                 <h3 className={`text-lg font-bold ${heading} mb-4 flex items-center`}>

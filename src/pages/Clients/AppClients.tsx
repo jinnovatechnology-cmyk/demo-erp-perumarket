@@ -471,7 +471,7 @@ export default function AppClients() {
         {/* Modal Formulario */}
         {isFormVisible && formCliente && (
           <div className="fixed inset-0 z-[100] overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-            <div className="flex min-h-screen items-center justify-center p-4 text-center sm:p-0">
+            <div className="flex min-h-full items-center justify-center p-4 text-center sm:p-0">
               {/* Backdrop */}
               <div
                 className="fixed inset-0 bg-black/60 backdrop-blur-sm transition-opacity"
@@ -479,7 +479,7 @@ export default function AppClients() {
               ></div>
 
               {/* Panel */}
-              <div className={`relative transform overflow-hidden rounded-2xl text-left shadow-2xl transition-all sm:w-full sm:max-w-4xl max-h-[90vh] flex flex-col ${isDark ? 'bg-[#171717] border border-neutral-800' : 'bg-white border border-gray-200'}`}>
+              <div className={`relative transform overflow-hidden rounded-2xl text-left shadow-2xl transition-all w-full max-w-4xl max-h-[92dvh] flex flex-col ${isDark ? 'bg-[#171717] border border-neutral-800' : 'bg-white border border-gray-200'}`}>
                 <div className="absolute top-4 right-4 z-10">
                    <button
                     onClick={handleCloseForm}
@@ -489,7 +489,7 @@ export default function AppClients() {
                   </button>
                 </div>
 
-                <div className="flex-1 overflow-hidden flex flex-col">
+                <div className="flex-1 min-h-0 overflow-hidden flex flex-col">
                   <ClienteForm
                     state={formCliente}
                     setField={setFormField}

@@ -115,7 +115,7 @@ export default function ProveedorFormModal({
 
   return (
     <div className="fixed inset-0 z-[100] overflow-y-auto">
-      <div className="flex min-h-screen items-center justify-center p-4">
+      <div className="flex min-h-full items-center justify-center p-4">
         {/* Backdrop */}
         <div
           className={`fixed inset-0 ${isDark ? 'bg-black/70' : 'bg-gray-900/50'} backdrop-blur-sm transition-opacity`}
@@ -124,12 +124,12 @@ export default function ProveedorFormModal({
 
         {/* Modal */}
         <div className={`
-          relative w-full max-w-2xl rounded-2xl border shadow-2xl overflow-hidden
+          relative w-full max-w-2xl rounded-2xl border shadow-2xl overflow-hidden max-h-[92dvh] flex flex-col
           ${isDark ? 'bg-[#171717] border-neutral-700' : 'bg-white border-gray-200'}
         `}>
           {/* ═══ HEADER ═══ */}
           <div className={`
-            px-6 py-5 border-b flex items-center justify-between
+            flex-none px-6 py-5 border-b flex items-center justify-between
             ${isDark ? 'bg-[#171717] border-neutral-800' : 'bg-white border-gray-100'}
           `}>
             <div className="flex items-center gap-4">
@@ -169,7 +169,7 @@ export default function ProveedorFormModal({
           )}
 
           {/* ═══ BODY ═══ */}
-          <form onSubmit={handleSubmit} className={`p-6 ${isDark ? 'bg-[#0a0a0a]' : 'bg-gray-50'}`}>
+          <form onSubmit={handleSubmit} className={`flex-1 min-h-0 overflow-y-auto p-6 ${isDark ? 'bg-[#0a0a0a]' : 'bg-gray-50'}`}>
             <div className="space-y-6">
 
               {/* Sección: Información Fiscal */}
@@ -283,7 +283,7 @@ export default function ProveedorFormModal({
 
           {/* ═══ FOOTER ═══ */}
           <div className={`
-            px-6 py-4 border-t flex items-center justify-end gap-3
+            flex-none px-6 py-4 border-t flex items-center justify-end gap-3
             ${isDark ? 'bg-[#171717] border-neutral-800' : 'bg-white border-gray-100'}
           `}>
             <button

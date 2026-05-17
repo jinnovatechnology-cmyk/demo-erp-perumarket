@@ -22,7 +22,7 @@ export default function ClienteDeleteModal({
 
   return (
     <div className="fixed inset-0 z-[200] overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-      <div className="flex min-h-screen items-center justify-center p-4 text-center sm:p-0">
+      <div className="flex min-h-full items-center justify-center p-4 text-center sm:p-0">
 
         {/* Backdrop */}
         <div
@@ -32,7 +32,7 @@ export default function ClienteDeleteModal({
         ></div>
 
         {/* Modal Panel */}
-        <div className={`relative transform overflow-hidden rounded-2xl text-left shadow-2xl transition-all sm:w-full sm:max-w-lg border ${isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-slate-200'}`}>
+        <div className={`relative transform overflow-hidden rounded-2xl text-left shadow-2xl transition-all w-full max-w-lg border ${isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-slate-200'}`}>
 
           {/* Contenido Principal */}
           <div className={`px-6 pt-6 pb-6 ${isDark ? 'bg-gray-800' : 'bg-white'}`}>

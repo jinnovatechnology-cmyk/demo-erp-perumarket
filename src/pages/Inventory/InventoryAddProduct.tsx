@@ -216,8 +216,8 @@ export default function InventoryAddProduct() {
 
             {/* EDIT MODAL */}
             {editing && (
-                <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-[100] p-4" onClick={() => setEditing(null)}>
-                    <div className={`rounded-2xl shadow-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto ${isDark ? 'bg-gray-800' : 'bg-white'}`} onClick={e => e.stopPropagation()}>
+                <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-[100] p-4 overflow-y-auto" onClick={() => setEditing(null)}>
+                    <div className={`rounded-2xl shadow-2xl max-w-lg w-full max-h-[92dvh] overflow-y-auto ${isDark ? 'bg-gray-800' : 'bg-white'}`} onClick={e => e.stopPropagation()}>
                         {/* Modal header */}
                         <div className={`sticky top-0 p-4 border-b flex justify-between items-center z-10 ${isDark ? 'border-gray-700 bg-gray-800' : 'border-gray-100 bg-white'}`}>
                             <div>

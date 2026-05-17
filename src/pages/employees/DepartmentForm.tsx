@@ -27,7 +27,7 @@ export default function DepartmentForm({ state, setField, onCancel, onSave }: Pr
   const inputClass = `w-full rounded-lg border px-4 py-2.5 text-sm focus:outline-none transition-colors focus:ring-2 focus:ring-[var(--color-primary-200)] focus:border-[var(--color-primary-500)] ${theme.input}`;
 
   return (
-    <div className={`p-6 ${theme.isDark ? 'bg-gray-800' : 'bg-white'}`}>
+    <div className={`flex-1 min-h-0 overflow-y-auto p-6 ${theme.isDark ? 'bg-gray-800' : 'bg-white'}`}>
       <div className="sm:flex sm:items-start">
         <div className={`hidden sm:flex mx-auto flex-shrink-0 items-center justify-center h-12 w-12 rounded-full sm:mx-0 sm:h-10 sm:w-10 ${
           theme.isDark ? 'bg-[var(--color-primary-900)]/30' : 'bg-indigo-100'

@@ -852,9 +852,9 @@ export default function Envios() {
 
       {/* ═══════ CREATE/EDIT MODAL ═══════ */}
       {showModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-y-auto">
           <div className={`absolute inset-0 ${isDark ? 'bg-black/70' : 'bg-gray-900/50'} backdrop-blur-sm`} onClick={closeModal}></div>
-          <div className={`relative ${isDark ? 'bg-[#171717]' : 'bg-white'} rounded-2xl shadow-2xl w-full ${activeTab === "envios" ? "max-w-4xl" : "max-w-lg"} max-h-[90vh] overflow-y-auto border ${isDark ? 'border-neutral-800' : 'border-gray-200'}`}>
+          <div className={`relative ${isDark ? 'bg-[#171717]' : 'bg-white'} rounded-2xl shadow-2xl w-full ${activeTab === "envios" ? "max-w-4xl" : "max-w-lg"} max-h-[92dvh] overflow-y-auto border ${isDark ? 'border-neutral-800' : 'border-gray-200'}`}>
             <div className={`p-5 border-b ${isDark ? 'border-neutral-800' : 'border-gray-100'} flex justify-between items-center sticky top-0 ${isDark ? 'bg-[#171717]' : 'bg-white'} z-10`}>
               <div className="flex items-center gap-3">
                 <div className="p-2 rounded-lg text-white" style={{ backgroundColor: COLORS.primary }}>
@@ -1196,9 +1196,9 @@ export default function Envios() {
 
       {/* ═══════ DETAIL MODAL ═══════ */}
       {showDetailModal && envioSeleccionado && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-y-auto">
           <div className={`absolute inset-0 ${isDark ? 'bg-black/70' : 'bg-gray-900/50'} backdrop-blur-sm`} onClick={() => setShowDetailModal(false)}></div>
-          <div className={`relative ${isDark ? 'bg-[#171717]' : 'bg-white'} rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto border ${isDark ? 'border-neutral-800' : 'border-gray-200'}`}>
+          <div className={`relative ${isDark ? 'bg-[#171717]' : 'bg-white'} rounded-2xl shadow-2xl w-full max-w-2xl max-h-[92dvh] overflow-y-auto border ${isDark ? 'border-neutral-800' : 'border-gray-200'}`}>
             <div className={`p-5 border-b ${isDark ? 'border-neutral-800' : 'border-gray-100'} flex justify-between items-center`}>
               <div className="flex items-center gap-3">
                 <div className="p-2 rounded-lg text-white" style={{ backgroundColor: COLORS.primary }}>
@@ -1251,7 +1251,7 @@ export default function Envios() {
 
       {/* ═══════ DELETE MODAL ═══════ */}
       {showDeleteModal && deleteTarget && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-y-auto">
           <div className={`absolute inset-0 ${isDark ? 'bg-black/70' : 'bg-gray-900/50'} backdrop-blur-sm`} onClick={() => setShowDeleteModal(false)}></div>
           <div className={`relative ${isDark ? 'bg-[#171717]' : 'bg-white'} rounded-2xl shadow-2xl w-full max-w-md border ${isDark ? 'border-neutral-800' : 'border-gray-200'}`}>
             <div className="p-6 text-center">

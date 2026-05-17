@@ -749,9 +749,9 @@ export default function NewPurchase() {
         };
 
         return (
-          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 overflow-y-auto">
             <div className={`absolute inset-0 ${isDark ? 'bg-black/70' : 'bg-gray-900/50'} backdrop-blur-sm transition-opacity`} onClick={() => { setIsProductModalOpen(false); setProductModalPage(1); }}></div>
-            <div className={`relative ${isDark ? 'bg-[#171717]' : 'bg-white'} w-full max-w-5xl max-h-[85vh] rounded-2xl shadow-2xl flex flex-col overflow-hidden animate-fadeInUp`}>
+            <div className={`relative ${isDark ? 'bg-[#171717]' : 'bg-white'} w-full max-w-5xl max-h-[88dvh] rounded-2xl shadow-2xl flex flex-col overflow-hidden animate-fadeInUp`}>
               {/* Header Modal */}
               <div className={`p-5 border-b ${isDark ? 'border-neutral-800 bg-[#171717]' : 'border-gray-100 bg-white'} z-10`}>
                 <div className="flex gap-4 items-center">
@@ -785,7 +785,7 @@ export default function NewPurchase() {
               </div>
 
               {/* Grid Productos */}
-              <div className={`flex-1 overflow-y-auto p-6 ${isDark ? 'bg-[#0a0a0a]' : 'bg-gray-50'}`}>
+              <div className={`flex-1 min-h-0 overflow-y-auto p-6 ${isDark ? 'bg-[#0a0a0a]' : 'bg-gray-50'}`}>
                 {loadingData ? (
                   <div className="flex justify-center items-center h-40">
                     <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#E0312A]"></div>
@@ -899,7 +899,7 @@ export default function NewPurchase() {
 
       {/* --- MODAL BARCODE --- */}
       {barcodeModalOpen && currentBarcodeData && (
-        <div className="fixed inset-0 z-[120] flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-[120] flex items-center justify-center p-4 overflow-y-auto">
           <div className={`absolute inset-0 ${isDark ? 'bg-black/70' : 'bg-gray-900/50'} backdrop-blur-sm`} onClick={() => setBarcodeModalOpen(false)}></div>
           <div className={`relative ${isDark ? 'bg-[#171717]' : 'bg-white'} rounded-2xl shadow-xl max-w-sm w-full p-6 animate-zoomIn text-center`}>
             <h3 className={`text-lg font-bold ${heading} mb-1`}>{currentBarcodeData.nombre}</h3>
@@ -917,7 +917,7 @@ export default function NewPurchase() {
 
       {/* --- MODAL CANCELAR --- */}
       {showCancelModal && (
-        <div className={`fixed inset-0 z-[130] ${isDark ? 'bg-black/70' : 'bg-gray-900/50'} backdrop-blur-sm flex items-center justify-center p-4`}>
+        <div className={`fixed inset-0 z-[130] ${isDark ? 'bg-black/70' : 'bg-gray-900/50'} backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto`}>
           <div className={`${isDark ? 'bg-[#171717]' : 'bg-white'} rounded-2xl shadow-2xl max-w-sm w-full p-6 text-center animate-zoomIn`}>
             <div className="w-16 h-16 bg-amber-100 text-amber-500 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl"><IoIosWarning /></div>
             <h3 className={`text-xl font-bold ${heading} mb-2`}>Cancelar esta compra?</h3>
@@ -932,7 +932,7 @@ export default function NewPurchase() {
 
       {/* --- MODAL CONFIRMACION DE GUARDADO --- */}
       {showConfirmModal && (
-        <div className={`fixed inset-0 z-[140] ${isDark ? 'bg-black/70' : 'bg-gray-900/50'} backdrop-blur-sm flex items-center justify-center p-4`}>
+        <div className={`fixed inset-0 z-[140] ${isDark ? 'bg-black/70' : 'bg-gray-900/50'} backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto`}>
           <div className={`${isDark ? 'bg-[#171717]' : 'bg-white'} rounded-2xl shadow-2xl max-w-sm w-full p-6 animate-zoomIn`}>
 
             <div className="text-center mb-6">
@@ -964,7 +964,7 @@ export default function NewPurchase() {
 
       {/* --- MODAL CAMBIO DE PROVEEDOR --- */}
       {showProveedorChangeModal && (
-        <div className={`fixed inset-0 z-[150] ${isDark ? 'bg-black/70' : 'bg-gray-900/50'} backdrop-blur-sm flex items-center justify-center p-4`}>
+        <div className={`fixed inset-0 z-[150] ${isDark ? 'bg-black/70' : 'bg-gray-900/50'} backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto`}>
           <div className={`${isDark ? 'bg-[#171717]' : 'bg-white'} rounded-2xl shadow-2xl max-w-sm w-full p-6 text-center animate-zoomIn`}>
             <div className="w-16 h-16 bg-amber-100 text-amber-500 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl">
               <IoIosWarning />

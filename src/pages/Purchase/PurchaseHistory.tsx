@@ -560,7 +560,7 @@ export default function PurchaseHistory() {
 
       {/* --- MODAL PARA CAMBIAR ESTADO --- */}
       {modalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 print:hidden">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-y-auto print:hidden">
           <div className={`absolute inset-0 ${isDark ? 'bg-black/70' : 'bg-gray-900/50'} backdrop-blur-sm`} onClick={() => setModalOpen(false)}></div>
 
           <div className={`relative ${isDark ? 'bg-[#171717]' : 'bg-white'} rounded-2xl shadow-2xl w-full max-w-sm overflow-hidden`}>

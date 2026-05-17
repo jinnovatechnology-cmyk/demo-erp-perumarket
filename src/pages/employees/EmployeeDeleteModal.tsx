@@ -25,7 +25,7 @@ export default function DeleteModal({
 
   return (
     <div className="fixed inset-0 z-[200] overflow-y-auto">
-      <div className="flex min-h-screen items-center justify-center p-4 text-center">
+      <div className="flex min-h-full items-center justify-center p-4 text-center">
 
         {/* Backdrop */}
         <div
@@ -34,7 +34,7 @@ export default function DeleteModal({
         ></div>
 
         {/* Modal Content */}
-        <div className={`relative transform overflow-hidden rounded-xl ${theme.modalContent} border text-left shadow-2xl transition-all sm:w-full sm:max-w-lg`}>
+        <div className={`relative transform overflow-hidden rounded-xl ${theme.modalContent} border text-left shadow-2xl transition-all w-full max-w-lg`}>
 
           {/* Header */}
           <div className={`px-6 pt-6 pb-4 ${theme.isDark ? 'bg-gray-800' : 'bg-white'}`}>

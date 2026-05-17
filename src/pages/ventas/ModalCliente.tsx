@@ -68,7 +68,7 @@ export default function ModalCliente({ isOpen, onClose, onRegistrar }: Props) {
 
   return (
     <div className="fixed inset-0 z-[100] overflow-y-auto">
-      <div className="flex min-h-screen items-center justify-center p-4">
+      <div className="flex min-h-full items-center justify-center p-4">
         {/* Backdrop */}
         <div
           className={`fixed inset-0 ${isDark ? 'bg-black/70' : 'bg-gray-900/50'} backdrop-blur-sm transition-opacity`}
@@ -77,15 +77,17 @@ export default function ModalCliente({ isOpen, onClose, onRegistrar }: Props) {
 
         {/* Modal - ClienteForm has its own header, body and footer */}
         <div className={`
-          relative w-full max-w-2xl rounded-2xl border shadow-2xl overflow-hidden max-h-[90vh]
+          relative w-full max-w-2xl rounded-2xl border shadow-2xl overflow-hidden max-h-[92dvh] flex flex-col
           ${isDark ? 'bg-[#171717] border-neutral-700' : 'bg-white border-gray-200'}
         `}>
-          <ClienteForm
-            state={cliente}
-            setField={setField}
-            onCancel={onClose}
-            onSave={handleSave}
-          />
+          <div className="flex-1 min-h-0 overflow-hidden flex flex-col">
+            <ClienteForm
+              state={cliente}
+              setField={setField}
+              onCancel={onClose}
+              onSave={handleSave}
+            />
+          </div>
         </div>
       </div>
     </div>

@@ -88,7 +88,7 @@ export function useThemeClasses() {
       : "text-gray-600 hover:bg-gray-50 hover:shadow-md",
 
     // Modal
-    modalOverlay: "fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50",
+    modalOverlay: "fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4 overflow-y-auto",
     modalContent: isDark ? "bg-gray-800 border-gray-700" : "bg-white border-gray-100",
     modalHeader: isDark ? "border-gray-700" : "border-gray-200",
 

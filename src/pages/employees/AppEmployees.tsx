@@ -411,13 +411,13 @@ export default function AppEmployees() {
         {/* Modal Empleado */}
         {isFormVisible && formEmployee && (
           <div className="fixed inset-0 z-[100] overflow-y-auto">
-            <div className="flex min-h-screen items-center justify-center p-4">
+            <div className="flex min-h-full items-center justify-center p-4">
               <div
                 className={`fixed inset-0 ${isDark ? 'bg-black/70' : 'bg-gray-900/50'} backdrop-blur-sm transition-opacity`}
                 onClick={closeForm}
               />
               <div className={`
-                relative w-full max-w-4xl rounded-2xl border shadow-2xl overflow-hidden max-h-[90vh] flex flex-col
+                relative w-full max-w-4xl rounded-2xl border shadow-2xl overflow-hidden max-h-[92dvh] flex flex-col
                 ${isDark ? 'bg-[#171717] border-neutral-700' : 'bg-white border-gray-200'}
               `}>
                 <EmployeeForm
@@ -435,13 +435,13 @@ export default function AppEmployees() {
         {/* Modal Departamento */}
         {isDepFormVisible && formDepartment && (
           <div className="fixed inset-0 z-[100] overflow-y-auto">
-            <div className="flex min-h-screen items-center justify-center p-4">
+            <div className="flex min-h-full items-center justify-center p-4">
               <div
                 className={`fixed inset-0 ${isDark ? 'bg-black/70' : 'bg-gray-900/50'} backdrop-blur-sm`}
                 onClick={closeDepartmentForm}
               />
               <div className={`
-                relative w-full max-w-lg rounded-2xl border shadow-2xl overflow-hidden
+                relative w-full max-w-lg rounded-2xl border shadow-2xl overflow-hidden max-h-[92dvh] flex flex-col
                 ${isDark ? 'bg-[#171717] border-neutral-700' : 'bg-white border-gray-200'}
               `}>
                 <DepartmentForm

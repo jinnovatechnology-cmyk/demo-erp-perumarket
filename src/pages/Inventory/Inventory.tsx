@@ -196,9 +196,9 @@ const ProductDetailModal = ({ product, onClose, isDark, onOpenBarcode }: {
     );
 
     return (
-        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[100] p-4" onClick={onClose}>
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[100] p-4 overflow-y-auto" onClick={onClose}>
             <div
-                className={`rounded-2xl shadow-2xl max-w-lg w-full overflow-hidden max-h-[90vh] flex flex-col ${isDark ? 'bg-[#171717]' : 'bg-white'}`}
+                className={`rounded-2xl shadow-2xl max-w-lg w-full overflow-hidden max-h-[92dvh] flex flex-col ${isDark ? 'bg-[#171717]' : 'bg-white'}`}
                 onClick={e => e.stopPropagation()}
             >
                 {/* Header */}
@@ -221,7 +221,7 @@ const ProductDetailModal = ({ product, onClose, isDark, onOpenBarcode }: {
                 </div>
 
                 {/* Body */}
-                <div className={`flex-1 overflow-y-auto ${isDark ? 'bg-[#0a0a0a]' : 'bg-gray-50'}`}>
+                <div className={`flex-1 min-h-0 overflow-y-auto ${isDark ? 'bg-[#0a0a0a]' : 'bg-gray-50'}`}>
                     {/* Product Image & Name */}
                     <div className={`p-5 border-b ${isDark ? 'bg-[#171717] border-neutral-800' : 'bg-white border-gray-100'}`}>
                         <div className="flex gap-4">

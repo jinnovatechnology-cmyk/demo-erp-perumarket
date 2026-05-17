@@ -721,7 +721,7 @@ const VentasList: React.FC = () => {
             {carritoAbierto && (
               <>
                 <div className="fixed inset-0 bg-black/40 backdrop-blur-sm z-40 transition-opacity duration-200" onClick={() => setCarritoAbierto(false)} />
-                <div className={`fixed inset-x-0 bottom-0 rounded-t-3xl shadow-2xl z-50 flex flex-col max-h-[85vh] ${isDark ? 'bg-gray-800' : 'bg-white'}`}>
+                <div className={`fixed inset-x-0 bottom-0 rounded-t-3xl shadow-2xl z-50 flex flex-col max-h-[85dvh] ${isDark ? 'bg-gray-800' : 'bg-white'}`}>
 
                   {/* Header */}
                   <div className="px-5 py-4 text-white rounded-t-3xl flex justify-between items-center shadow-md bg-gradient-to-r from-[#E0312A] to-[#A91E16]">
@@ -737,7 +737,7 @@ const VentasList: React.FC = () => {
                   </div>
 
                   {/* Cart items */}
-                  <div className={`flex-1 overflow-y-auto p-3 space-y-2 ${isDark ? 'bg-gray-850' : 'bg-gray-50'}`}>
+                  <div className={`flex-1 min-h-0 overflow-y-auto p-3 space-y-2 ${isDark ? 'bg-gray-850' : 'bg-gray-50'}`}>
                     {carrito.length === 0 ? (
                       <div className={`h-full flex flex-col items-center justify-center py-12 ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>
                         <FiFileText size={48} className={`mb-3 ${isDark ? 'text-gray-600' : 'text-gray-300'}`} />

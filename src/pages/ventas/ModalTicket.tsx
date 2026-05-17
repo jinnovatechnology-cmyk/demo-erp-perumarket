@@ -154,14 +154,14 @@ const ModalTicket: React.FC<ModalTicketProps> = ({ isOpen, onClose, venta }) => 
 
   return (
     <div className="fixed inset-0 z-[100] overflow-y-auto">
-      <div className="flex min-h-screen items-center justify-center p-4">
+      <div className="flex min-h-full items-center justify-center p-4">
         <div
           className={`fixed inset-0 ${isDark ? 'bg-black/70' : 'bg-gray-900/50'} backdrop-blur-sm transition-opacity`}
           onClick={onClose}
         />
 
         <div className={`
-          relative w-full max-w-md rounded-2xl border shadow-2xl overflow-hidden max-h-[90vh] flex flex-col
+          relative w-full max-w-md rounded-2xl border shadow-2xl overflow-hidden max-h-[92dvh] flex flex-col
           ${isDark ? 'bg-[#171717] border-neutral-700' : 'bg-white border-gray-200'}
         `}>
           {/* Header */}
@@ -192,7 +192,7 @@ const ModalTicket: React.FC<ModalTicketProps> = ({ isOpen, onClose, venta }) => 
           </div>
 
           {/* Body */}
-          <div className={`flex-1 overflow-y-auto ${isDark ? 'bg-[#0a0a0a]' : 'bg-gray-50'}`}>
+          <div className={`flex-1 min-h-0 overflow-y-auto ${isDark ? 'bg-[#0a0a0a]' : 'bg-gray-50'}`}>
             {/* Estado SUNAT (simulación de API) */}
             <div className="p-4 pb-0">
               {sunatEstado === 'enviando' ? (

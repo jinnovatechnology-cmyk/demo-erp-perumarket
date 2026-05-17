@@ -300,7 +300,7 @@ export default function PurchaseList() {
 
       {/* --- MODAL FLOTANTE PARA CAMBIAR ESTADO --- */}
       {modalOpen && selectedCompra && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-y-auto">
             <div className={`absolute inset-0 ${isDark ? 'bg-black/70' : 'bg-gray-900/50'} backdrop-blur-sm transition-opacity`} onClick={() => setModalOpen(false)}></div>
 
             <div className={`relative ${isDark ? 'bg-[#171717]' : 'bg-white'} rounded-xl shadow-2xl w-full max-w-sm overflow-hidden animate-fadeInUp`}>

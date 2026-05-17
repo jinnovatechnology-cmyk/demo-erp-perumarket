@@ -221,7 +221,7 @@ export default function EmployeeForm({
 
       {/* ═══ BODY SCROLLABLE ═══ */}
       <div className={`
-        flex-1 overflow-y-auto p-6
+        flex-1 min-h-0 overflow-y-auto p-6
         ${isDark ? 'bg-[#0a0a0a]' : 'bg-gray-50'}
       `}>
         <form id="employee-form" onSubmit={handleSubmit} className="space-y-6">

@@ -157,7 +157,7 @@ const ModalPago: React.FC<ModalPagoProps> = ({
   if (mostrarExito) {
     return (
       <div className="fixed inset-0 z-[100] overflow-y-auto">
-        <div className="flex min-h-screen items-center justify-center p-4">
+        <div className="flex min-h-full items-center justify-center p-4">
           <div
             className={`fixed inset-0 ${isDark ? 'bg-black/70' : 'bg-gray-900/50'} backdrop-blur-sm`}
           />
@@ -283,14 +283,14 @@ const ModalPago: React.FC<ModalPagoProps> = ({
   // ═══ PAYMENT FORM ═══
   return (
     <div className="fixed inset-0 z-[100] overflow-y-auto">
-      <div className="flex min-h-screen items-center justify-center p-4">
+      <div className="flex min-h-full items-center justify-center p-4">
         <div
           className={`fixed inset-0 ${isDark ? 'bg-black/70' : 'bg-gray-900/50'} backdrop-blur-sm`}
           onClick={onClose}
         />
 
         <div className={`
-          relative w-full max-w-3xl rounded-2xl border shadow-2xl overflow-hidden max-h-[90vh] flex flex-col
+          relative w-full max-w-3xl rounded-2xl border shadow-2xl overflow-hidden max-h-[92dvh] flex flex-col
           ${isDark ? 'bg-[#171717] border-neutral-700' : 'bg-white border-gray-200'}
         `}>
           {/* Header */}
@@ -324,7 +324,7 @@ const ModalPago: React.FC<ModalPagoProps> = ({
           </div>
 
           {/* Body */}
-          <div className={`flex-1 overflow-y-auto p-6 ${isDark ? 'bg-[#0a0a0a]' : 'bg-gray-50'}`}>
+          <div className={`flex-1 min-h-0 overflow-y-auto p-6 ${isDark ? 'bg-[#0a0a0a]' : 'bg-gray-50'}`}>
             {/* Sale Summary */}
             <div className={`
               rounded-xl p-5 border mb-6 flex flex-col sm:flex-row justify-between items-center gap-4
