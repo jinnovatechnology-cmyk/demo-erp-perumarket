@@ -32,13 +32,14 @@ export default function Login() {
   const rootRef = useRef<HTMLDivElement>(null);
   const errorRef = useRef<HTMLDivElement>(null);
 
-  const particles = useMemo(
+  // Burbujas decorativas (bokeh) del fondo
+  const bokeh = useMemo(
     () =>
-      Array.from({ length: 26 }).map(() => ({
+      Array.from({ length: 18 }).map(() => ({
         top: Math.random() * 100,
         left: Math.random() * 100,
-        size: 2 + Math.random() * 5,
-        o: 0.1 + Math.random() * 0.35,
+        size: 30 + Math.random() * 130,
+        o: 0.04 + Math.random() * 0.1,
       })),
     []
   );
@@ -59,29 +60,28 @@ export default function Login() {
       sel('[data-anim="form"]'),
       {
         opacity: [0, 1],
-        translateX: [-26, 0],
-        delay: stagger(reduce ? 0 : 65),
+        translateY: [22, 0],
+        delay: stagger(reduce ? 0 : 60),
       },
       0
     ).add(
       sel('[data-anim="brand"]'),
       {
         opacity: [0, 1],
-        translateY: [26, 0],
+        scale: [0.94, 1],
         delay: stagger(reduce ? 0 : 90),
       },
-      reduce ? 0 : 150
+      reduce ? 0 : 120
     );
 
     if (!reduce) {
-      animate(sel('[data-anim="particle"]'), {
-        translateY: [0, -14],
-        opacity: [0.12, 0.4],
+      animate(sel('[data-anim="bokeh"]'), {
+        translateY: [0, -18],
         loop: true,
         alternate: true,
-        duration: 3200,
+        duration: 4200,
         ease: "inOutSine",
-        delay: stagger(160),
+        delay: stagger(200),
       });
     }
 
@@ -136,13 +136,34 @@ export default function Login() {
   };
 
   const inputBase =
-    "w-full pl-12 pr-4 py-3.5 bg-white/[0.04] border border-white/10 rounded-xl text-white placeholder-white/35 focus:outline-none focus:border-[#E0312A] focus:ring-2 focus:ring-[#E0312A]/30 focus:bg-white/[0.06] transition-all";
+    "w-full pl-11 pr-4 py-3 bg-white border border-transparent rounded-lg text-gray-800 placeholder-gray-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-white/70 transition-all";
 
   return (
     <div
       ref={rootRef}
-      className="min-h-screen flex bg-[#0b0b0c] font-sans text-white overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center font-sans text-white overflow-x-hidden py-8 px-4 sm:px-6 bg-gradient-to-br from-[#3a0a08] via-[#160404] to-[#2a0707]"
     >
+      {/* Burbujas / bokeh de fondo */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {bokeh.map((b, i) => (
+          <span
+            key={i}
+            data-anim="bokeh"
+            className="absolute rounded-full bg-[#E0312A]"
+            style={{
+              top: `${b.top}%`,
+              left: `${b.left}%`,
+              width: `${b.size}px`,
+              height: `${b.size}px`,
+              opacity: b.o,
+              filter: "blur(2px)",
+            }}
+          />
+        ))}
+        <div className="absolute -top-40 -right-32 w-[34rem] h-[34rem] rounded-full bg-[#E0312A]/15 blur-[130px]" />
+        <div className="absolute -bottom-48 -left-32 w-[34rem] h-[34rem] rounded-full bg-[#6E0F0B]/30 blur-[130px]" />
+      </div>
+
       {/* Toggle de tema */}
       <button
         type="button"
@@ -153,261 +174,250 @@ export default function Login() {
         {mode === "dark" ? <FiSun size={18} /> : <FiMoon size={18} />}
       </button>
 
-      {/* ───────────── Panel Izquierdo: Formulario ───────────── */}
-      <div className="w-full lg:w-[44%] flex items-center justify-center p-6 sm:p-10">
-        <div className="w-full max-w-md">
-          {/* Logo */}
-          <div data-anim="form" className="mb-8 opacity-0">
-            <div className="inline-flex bg-white rounded-2xl p-3 shadow-lg">
+      {/* ───────────── Tarjeta principal ───────────── */}
+      <div className="relative z-10 w-full max-w-5xl grid lg:grid-cols-2 lg:min-h-[640px] rounded-3xl sm:rounded-[2rem] overflow-hidden shadow-2xl shadow-black/50 border border-white/10">
+        {/* ── Panel izquierdo: ilustración / marca ── */}
+        <div className="relative hidden lg:flex flex-col bg-white p-8 overflow-hidden">
+          {/* Logo arriba */}
+          <div data-anim="brand" className="opacity-0 relative z-10 flex items-center gap-3">
+            <img
+              src={PeruMarketLogo}
+              alt="Peru Market"
+              className="h-12 w-auto object-contain"
+            />
+            <div>
+              <p className="text-sm font-bold leading-tight text-[#A91E16]">
+                PERU MARKET
+              </p>
+              <p className="text-xs font-medium text-gray-500">Sistema ERP</p>
+            </div>
+          </div>
+
+          {/* Ilustración central */}
+          <div className="relative z-10 flex-1 flex items-center justify-center py-10">
+            {/* Halos suaves */}
+            <div className="absolute w-72 h-72 rounded-full bg-[#E0312A]/10 blur-2xl" />
+            <div className="absolute w-52 h-52 rounded-full bg-[#E0312A]/5" />
+            <div
+              data-anim="brand"
+              className="opacity-0 relative inline-flex items-center justify-center bg-gradient-to-br from-[#E0312A] to-[#A91E16] rounded-[2rem] p-10 shadow-xl shadow-[#E0312A]/30"
+            >
               <img
                 src={PeruMarketLogo}
                 alt="Peru Market"
-                className="h-14 w-auto object-contain"
+                className="h-40 xl:h-48 w-auto object-contain brightness-0 invert"
               />
             </div>
-            <div className="mt-4 h-1 w-24 rounded-full bg-gradient-to-r from-[#E0312A] to-[#A91E16]" />
-            <p className="mt-4 text-white/50 text-sm">
-              Inicia sesión en tu cuenta
-            </p>
           </div>
 
-          {/* Datos de prueba */}
-          <div
-            data-anim="form"
-            className="mb-5 rounded-xl border border-[#E0312A]/30 bg-[#E0312A]/[0.07] p-4 opacity-0"
-          >
-            <div className="flex items-center gap-2 mb-2">
-              <FiKey className="w-4 h-4 text-[#F0726A]" />
-              <span className="text-xs font-semibold uppercase tracking-wider text-[#F0726A]">
-                Datos de prueba
-              </span>
-            </div>
-            <p className="text-sm text-white/70">
-              Correo:{" "}
-              <span className="font-medium text-white">{DEMO.email}</span>
-            </p>
-            <p className="text-sm text-white/70">
-              Contraseña:{" "}
-              <span className="font-medium text-white">{DEMO.password}</span>
-            </p>
-            <button
-              type="button"
-              onClick={usarDemo}
-              className="mt-3 text-xs font-semibold text-[#F0726A] hover:text-[#F8A39D] transition-colors"
-            >
-              Usar datos de prueba →
-            </button>
-          </div>
-
-          {/* Error */}
-          {error && (
-            <div
-              ref={errorRef}
-              className="mb-5 flex items-center gap-3 rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3"
-            >
-              <FiAlertCircle className="w-5 h-5 text-red-400 flex-shrink-0" />
-              <p className="text-sm text-red-300">{error}</p>
-            </div>
-          )}
-
-          {/* Formulario */}
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              handleLogin();
-            }}
-            className="space-y-5"
-          >
-            {/* Correo */}
-            <div data-anim="form" className="opacity-0">
-              <label className="block text-sm font-semibold text-white/80 mb-2">
-                Correo electrónico
-              </label>
-              <div className="relative group">
-                <FiMail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-white/35 group-focus-within:text-[#E0312A] transition-colors" />
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  onKeyDown={(e) => e.key === "Enter" && handleLogin()}
-                  disabled={isLoading}
-                  autoComplete="email"
-                  className={inputBase}
-                  placeholder="nombre@perumarket.com"
-                />
-              </div>
-            </div>
-
-            {/* Contraseña */}
-            <div data-anim="form" className="opacity-0">
-              <label className="block text-sm font-semibold text-white/80 mb-2">
-                Contraseña
-              </label>
-              <div className="relative group">
-                <FiLock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-white/35 group-focus-within:text-[#E0312A] transition-colors" />
-                <input
-                  type={showPassword ? "text" : "password"}
-                  value={pass}
-                  onChange={(e) => setPass(e.target.value)}
-                  onKeyDown={(e) => e.key === "Enter" && handleLogin()}
-                  disabled={isLoading}
-                  autoComplete="current-password"
-                  className={`${inputBase} pr-12`}
-                  placeholder="••••••••"
-                />
-                <button
-                  type="button"
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-white/40 hover:text-[#E0312A] transition-colors"
-                >
-                  {showPassword ? <FiEyeOff size={18} /> : <FiEye size={18} />}
-                </button>
-              </div>
-            </div>
-
-            {/* Recordar / recuperar */}
-            <div
-              data-anim="form"
-              className="flex items-center justify-between opacity-0"
-            >
-              <label className="flex items-center gap-2 text-sm text-white/60 cursor-pointer select-none">
-                <input
-                  type="checkbox"
-                  checked={remember}
-                  onChange={(e) => setRemember(e.target.checked)}
-                  className="w-4 h-4 rounded border-white/20 bg-white/5 accent-[#E0312A]"
-                />
-                Recordar sesión
-              </label>
-              <button
-                type="button"
-                onClick={() =>
-                  setError(
-                    "Para recuperar tu acceso contacta al administrador del sistema."
-                  )
-                }
-                className="text-sm font-medium text-[#F0726A] hover:text-[#F8A39D] transition-colors"
-              >
-                Recuperar acceso
-              </button>
-            </div>
-
-            {/* Botón principal */}
-            <button
-              type="submit"
-              disabled={isLoading}
-              data-anim="form"
-              className="opacity-0 w-full flex items-center justify-center gap-2 py-3.5 rounded-xl font-semibold text-white bg-gradient-to-r from-[#E0312A] to-[#A91E16] shadow-lg shadow-[#E0312A]/30 hover:shadow-xl hover:shadow-[#E0312A]/40 hover:brightness-110 active:scale-[0.99] transition-all disabled:opacity-60 disabled:cursor-not-allowed"
-            >
-              {isLoading ? (
-                <>
-                  <span className="w-5 h-5 border-2 border-white/40 border-t-white rounded-full animate-spin" />
-                  Verificando...
-                </>
-              ) : (
-                <>
-                  <FiArrowRight size={18} />
-                  Iniciar Sesión
-                </>
-              )}
-            </button>
-          </form>
-
-          {/* Divisor */}
-          <div data-anim="form" className="my-6 flex items-center gap-4 opacity-0">
-            <div className="flex-1 h-px bg-white/10" />
-            <span className="text-xs text-white/30">o</span>
-            <div className="flex-1 h-px bg-white/10" />
-          </div>
-
-          {/* Botón secundario */}
-          <button
-            type="button"
-            data-anim="form"
-            onClick={() => navigate("/test-connection")}
-            className="opacity-0 w-full flex items-center justify-center gap-2 py-3.5 rounded-xl font-medium text-white/80 border border-white/10 hover:bg-white/[0.05] hover:text-white transition-all"
-          >
-            <FiExternalLink size={16} />
-            Probar conexión
-          </button>
-
-          {/* Footer */}
+          {/* Footer del panel */}
           <p
-            data-anim="form"
-            className="mt-8 text-center text-xs text-white/30 opacity-0"
+            data-anim="brand"
+            className="opacity-0 relative z-10 text-xs text-gray-400"
           >
             © 2026 Peru Market — Todos los derechos reservados
           </p>
         </div>
-      </div>
 
-      {/* ───────────── Panel Derecho: Marca ───────────── */}
-      <div className="hidden lg:flex lg:w-[56%] relative items-center justify-center overflow-hidden bg-gradient-to-br from-[#E0312A] via-[#B91C1C] to-[#6E0F0B]">
-        {/* Partículas */}
-        <div className="absolute inset-0">
-          {particles.map((p, i) => (
-            <span
-              key={i}
-              data-anim="particle"
-              className="absolute rounded-full bg-white"
-              style={{
-                top: `${p.top}%`,
-                left: `${p.left}%`,
-                width: `${p.size}px`,
-                height: `${p.size}px`,
-                opacity: p.o,
-              }}
-            />
-          ))}
-        </div>
-
-        {/* Glow sutil */}
-        <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-[#F0473B]/25 blur-3xl" />
-        <div className="absolute -bottom-40 -left-24 w-96 h-96 rounded-full bg-[#6E0F0B]/50 blur-3xl" />
-
-        {/* Contenido */}
-        <div className="relative z-10 text-center px-12">
-          <div
-            data-anim="brand"
-            className="opacity-0 inline-flex bg-white rounded-3xl p-8 shadow-2xl"
-          >
-            <img
-              src={PeruMarketLogo}
-              alt="Peru Market"
-              className="h-40 xl:h-48 w-auto object-contain"
-            />
+        {/* ── Panel derecho: formulario ── */}
+        <div className="relative flex flex-col justify-center bg-gradient-to-br from-[#E0312A] via-[#B91C1C] to-[#7E120D] px-6 py-8 sm:p-10 lg:p-12">
+          {/* Logo visible solo en movil (el panel ilustrado se oculta) */}
+          <div data-anim="form" className="opacity-0 lg:hidden mb-5 flex items-center gap-3">
+            <div className="inline-flex bg-white rounded-xl p-2 shadow-md">
+              <img
+                src={PeruMarketLogo}
+                alt="Peru Market"
+                className="h-9 w-auto object-contain"
+              />
+            </div>
+            <div>
+              <p className="text-sm font-bold leading-tight text-white">PERU MARKET</p>
+              <p className="text-xs font-medium text-white/70">Sistema ERP</p>
+            </div>
           </div>
-          <h2
-            data-anim="brand"
-            className="opacity-0 mt-10 text-3xl font-bold text-white"
-          >
-            Sistema ERP
-          </h2>
-          <p
-            data-anim="brand"
-            className="opacity-0 mt-3 text-white/80 text-lg max-w-md mx-auto"
-          >
-            Gestiona tu negocio de manera inteligente y eficiente
-          </p>
 
-          {/* Badges */}
-          <div
-            data-anim="brand"
-            className="opacity-0 mt-10 flex flex-wrap items-center justify-center gap-3"
-          >
-            {[
-              { icon: <FiShield size={16} />, label: "Seguro" },
-              { icon: <FiZap size={16} />, label: "Rápido" },
-              { icon: <FiSmartphone size={16} />, label: "Responsive" },
-            ].map((b) => (
-              <span
-                key={b.label}
-                className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/15 border border-white/20 backdrop-blur-sm text-white text-sm font-medium"
+          <div className="w-full max-w-sm mx-auto">
+            <h1
+              data-anim="form"
+              className="opacity-0 text-3xl sm:text-4xl font-bold text-white"
+            >
+              Iniciar Sesión
+            </h1>
+            <p data-anim="form" className="opacity-0 mt-1.5 text-white/70 text-sm">
+              Bienvenido de nuevo, ingresa tus credenciales.
+            </p>
+
+            {/* Datos de prueba */}
+            <div
+              data-anim="form"
+              className="opacity-0 mt-5 rounded-xl border border-white/20 bg-white/10 p-3 backdrop-blur-sm"
+            >
+              <div className="flex items-center gap-2 mb-1.5">
+                <FiKey className="w-4 h-4 text-white" />
+                <span className="text-[11px] font-semibold uppercase tracking-wider text-white/90">
+                  Datos de prueba
+                </span>
+              </div>
+              <p className="text-xs text-white/80">
+                Correo: <span className="font-medium text-white">{DEMO.email}</span>
+              </p>
+              <p className="text-xs text-white/80">
+                Contraseña:{" "}
+                <span className="font-medium text-white">{DEMO.password}</span>
+              </p>
+              <button
+                type="button"
+                onClick={usarDemo}
+                className="mt-2 text-xs font-semibold text-white underline-offset-2 hover:underline"
               >
-                {b.icon}
-                {b.label}
-              </span>
-            ))}
+                Usar datos de prueba →
+              </button>
+            </div>
+
+            {/* Error */}
+            {error && (
+              <div
+                ref={errorRef}
+                className="mt-5 flex items-center gap-3 rounded-lg border border-white/30 bg-black/20 px-4 py-3"
+              >
+                <FiAlertCircle className="w-5 h-5 text-white flex-shrink-0" />
+                <p className="text-sm text-white">{error}</p>
+              </div>
+            )}
+
+            {/* Formulario */}
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                handleLogin();
+              }}
+              className="mt-5 space-y-4"
+            >
+              {/* Correo */}
+              <div data-anim="form" className="opacity-0">
+                <label className="block text-sm font-medium text-white/90 mb-1.5">
+                  Correo electrónico
+                </label>
+                <div className="relative group">
+                  <FiMail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    onKeyDown={(e) => e.key === "Enter" && handleLogin()}
+                    disabled={isLoading}
+                    autoComplete="email"
+                    className={inputBase}
+                    placeholder="nombre@perumarket.com"
+                  />
+                </div>
+              </div>
+
+              {/* Contraseña */}
+              <div data-anim="form" className="opacity-0">
+                <label className="block text-sm font-medium text-white/90 mb-1.5">
+                  Contraseña
+                </label>
+                <div className="relative group">
+                  <FiLock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    value={pass}
+                    onChange={(e) => setPass(e.target.value)}
+                    onKeyDown={(e) => e.key === "Enter" && handleLogin()}
+                    disabled={isLoading}
+                    autoComplete="current-password"
+                    className={`${inputBase} pr-11`}
+                    placeholder="••••••••"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute right-3.5 top-1/2 -translate-y-1/2 text-gray-400 hover:text-[#E0312A] transition-colors"
+                  >
+                    {showPassword ? <FiEyeOff size={18} /> : <FiEye size={18} />}
+                  </button>
+                </div>
+              </div>
+
+              {/* Recordar / recuperar */}
+              <div
+                data-anim="form"
+                className="flex flex-wrap items-center justify-between gap-2 opacity-0"
+              >
+                <label className="flex items-center gap-2 text-sm text-white/80 cursor-pointer select-none whitespace-nowrap">
+                  <input
+                    type="checkbox"
+                    checked={remember}
+                    onChange={(e) => setRemember(e.target.checked)}
+                    className="w-4 h-4 rounded border-white/30 bg-white/10 accent-white"
+                  />
+                  Recordar sesión
+                </label>
+                <button
+                  type="button"
+                  onClick={() =>
+                    setError(
+                      "Para recuperar tu acceso contacta al administrador del sistema."
+                    )
+                  }
+                  className="text-sm font-medium text-white/90 hover:text-white hover:underline underline-offset-2 transition-colors whitespace-nowrap"
+                >
+                  ¿Olvidaste tu contraseña?
+                </button>
+              </div>
+
+              {/* Botón principal */}
+              <button
+                type="submit"
+                disabled={isLoading}
+                data-anim="form"
+                className="opacity-0 w-full flex items-center justify-center gap-2 py-3 rounded-lg font-semibold text-[#A91E16] bg-white shadow-lg hover:bg-white/95 hover:shadow-xl active:scale-[0.99] transition-all disabled:opacity-60 disabled:cursor-not-allowed"
+              >
+                {isLoading ? (
+                  <>
+                    <span className="w-5 h-5 border-2 border-[#E0312A]/40 border-t-[#E0312A] rounded-full animate-spin" />
+                    Verificando...
+                  </>
+                ) : (
+                  <>
+                    <FiArrowRight size={18} />
+                    Iniciar Sesión
+                  </>
+                )}
+              </button>
+            </form>
+
+            {/* Botón secundario */}
+            <button
+              type="button"
+              data-anim="form"
+              onClick={() => navigate("/test-connection")}
+              className="opacity-0 mt-3 w-full flex items-center justify-center gap-2 py-3 rounded-lg font-medium text-white/90 border border-white/30 hover:bg-white/10 transition-all"
+            >
+              <FiExternalLink size={16} />
+              Probar conexión
+            </button>
+
+            {/* Badges de confianza (ocultos en movil para mantener el card centrado) */}
+            <div
+              data-anim="form"
+              className="opacity-0 mt-6 hidden sm:flex flex-wrap items-center justify-center gap-2"
+            >
+              {[
+                { icon: <FiShield size={14} />, label: "Seguro" },
+                { icon: <FiZap size={14} />, label: "Rápido" },
+                { icon: <FiSmartphone size={14} />, label: "Responsive" },
+              ].map((b) => (
+                <span
+                  key={b.label}
+                  className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-white/80 text-xs font-medium"
+                >
+                  {b.icon}
+                  {b.label}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       </div>

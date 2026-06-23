@@ -1,5 +1,6 @@
 /// <reference types="vite/client" />
 
+
 interface ImportMetaEnv {
   /** URL del proyecto Supabase (ej: https://xxxx.supabase.co) */
   readonly VITE_SUPABASE_URL: string;
@@ -10,3 +11,4 @@ interface ImportMetaEnv {
 interface ImportMeta {
   readonly env: ImportMetaEnv;
 }
+
